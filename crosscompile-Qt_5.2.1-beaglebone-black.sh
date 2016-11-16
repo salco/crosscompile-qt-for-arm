@@ -51,33 +51,6 @@ NPROC=`nproc`
 #fi
 #exit
 
-cd ${QT_SRCDIR}
-QMAKE_CROSS="${PREFIX}/bin/qmake"
-###############################################################
-# build qtquickcontrols
-cd qtquickcontrols
-${QMAKE_CROSS} 2>&1 | tee -a ${LOG_DIR}/qtquickcontrols-qmake-log.txt
-sudo make -j${NPROC} 2>&1 | tee -a ${LOG_DIR}/qtquickcontrols-make-log.txt
-sudo make install
-cd ..
-
-###############################################################
-# build qtmultimedia
-cd qtmultimedia
-${QMAKE_CROSS} 2>&1 | tee -a ${LOG_DIR}/qtmultimedia-qmake-log.txt
-sudo make -j${NPROC} 2>&1 | tee -a ${LOG_DIR}/qtmultimedia-make-log.txt
-sudo make install
-cd ..
-
-###############################################################
-# build qtconnectivity
-cd qtconnectivity
-${QMAKE_CROSS} 2>&1 | tee -a ${LOG_DIR}/qtconnectivity-qmake-log.txt
-sudo make -j${NPROC} 2>&1 | tee -a ${LOG_DIR}/qtconnectivity-make-log.txt
-sudo make install
-cd ..
-
-exit
 ###############################################################
 #clean up
 # delete old log files
@@ -330,11 +303,20 @@ cd ..
 
 ###############################################################
 # build qtquick1
-cd qtquick1
-${QMAKE_CROSS} 2>&1 | tee -a ${LOG_DIR}/qtquick1-qmake-log.txt
-sudo make -j${NPROC} 2>&1 | tee -a ${LOG_DIR}/qtquick1-make-log.txt
+#cd qtquick1
+#${QMAKE_CROSS} 2>&1 | tee -a ${LOG_DIR}/qtquick1-qmake-log.txt
+#sudo make -j${NPROC} 2>&1 | tee -a ${LOG_DIR}/qtquick1-make-log.txt
+#sudo make install
+#cd ..
+
+###############################################################
+# build qtx11extras
+cd qtx11extras
+${QMAKE_CROSS} 2>&1 | tee -a ${LOG_DIR}/qtx11extras-qmake-log.txt
+sudo make -j${NPROC} 2>&1 | tee -a ${LOG_DIR}/qtx11extras-make-log.txt
 sudo make install
 cd ..
+
 
 ###############################################################
 # build qtquickcontrols
